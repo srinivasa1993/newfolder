@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookstore-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bookstore
+  template:
+    metadata:
+      labels:
+        app: bookstore
+    spec:
+      containers:
+        - name: book-service
+          image: your-dockerhub/book-service:latest
+        - name: user-service
+          image: your-dockerhub/user-service:latest
+        - name: order-service
+          image: your-dockerhub/order-service:latest
+
